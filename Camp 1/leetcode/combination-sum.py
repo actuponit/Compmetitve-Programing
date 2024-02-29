@@ -10,14 +10,11 @@ class Solution:
             for i in range(idx, len(candidates)):
                 if s + candidates[i] > self.target:
                     break
-                if s < self.target:
-                    path.append(candidates[i])
-                    backtrack(path, s+candidates[i], i)    
-                    path.pop()
-                    continue
-
-                backtrack(path, s, i)
+                
+                path.append(candidates[i])
+                backtrack(path, s+candidates[i], i)    
                 path.pop()
+        
         candidates.sort()
         sol = []
         backtrack([], 0, 0)
